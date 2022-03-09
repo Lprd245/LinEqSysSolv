@@ -1,6 +1,6 @@
 import java.util.Arrays;
 
-public class Output_Engine {
+public class Output_Engine_poc {
     
     public static final String ANSI_YELLOW = "\u001B[33m";
     public static final String ANSI_RESET = "\u001B[0m";
@@ -10,11 +10,15 @@ public class Output_Engine {
 
     public static void main(String[] args){
         
-    }
-
-    public static void print(int arr[][]){
-        
         System.out.println(ANSI_YELLOW + "[INFO]: " + ANSI_GREEN + "output engine" + ANSI_RESET + " initalized");
+
+        int arr[][];
+        arr = new int [2][2];
+        arr[0][0] = 3;
+        arr[1][0] = 197;
+        arr[0][1] = 983249;
+        arr[1][1] = 5;
+
 
         for(int y = 0; y < arr[0].length; y++){
             for(int x = 0; x < arr.length; x++){

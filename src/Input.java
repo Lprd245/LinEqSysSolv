@@ -11,9 +11,9 @@ public class Input {
 
         //System.out.println(arr[0][0]);
 
-        int str[];
-        str = new int [1];
-        str[0] = 17;
-        tmp.junk(str);
+        //int str[][];
+        //str = new int [1][1];
+        //str[0][0] = 17;
+        Output_Engine.print(arr);
     }
 }
