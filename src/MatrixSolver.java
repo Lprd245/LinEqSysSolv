@@ -9,21 +9,26 @@ public class MatrixSolver {
         System.out.println(ANSI_RED + "[WARNING]: " + ANSI_RESET + "don't use main, it doesn't do anything, use another method");
         //ONLY USE MAIN METHOD FOR TESTING!!!
         int arr [][][];
-        arr = new int [1][1][1];
+        arr = new int [1][3][4];
         Determinant(arr);
     }
 
     public static void Determinant(int arr[][][]){
 
+        // 3-dimensional Array of strings with y being the variable to be found for each "layer", form arr[3][4][x]
+        // [x][x][x]
+        // [x][x][x]
+        // [x][x][x]
+        // [y]
+
         System.out.println(ANSI_YELLOW + "[INFO]: " + ANSI_GREEN + "MatrixSolver" + ANSI_RESET + " initalized");
 
-        if(arr[0].length != arr.length){
-            System.out.println("not a 'square' matrix");
-        }
+        int Determinant[][];
+        Determinant = new int [1][3];
+        Determinant[0][0] = arr[0][0][3];
+        Determinant[0][1] = arr[0][0][0]*arr[0][1][1]*arr[0][2][2] + arr[0][1][0]*arr[0][2][1]*arr[0][0][2] + arr[0][2][0]*arr[0][0][1]*arr[0][1][2] - arr[0][0][2]*arr[0][1][1]*arr[0][2][0] - arr[0][1][2]*arr[0][2][1]*arr[0][0][0] - arr[0][2][2]*arr[0][0][1]*arr[0][1][0];
 
-        int Determinant[];
-        Determinant = new int [4];
-        Determinant[0] = arr[0][0][0]*arr[0][1][1]*arr[0][2][2] + arr[0][1][0]*arr[0][2][1]*arr[0][0][2] + arr[0][2][0]*arr[0][0][1]*arr[0][1][2] - arr[0][0][2]*arr[0][1][1]*arr[0][2][0] - arr[0][1][2]*arr[0][2][1]*arr[0][0][0] - arr[0][2][2]*arr[0][0][1]*arr[0][1][0];
+        Output_Engine.print(Determinant);
 
         System.out.println(ANSI_YELLOW + "[INFO]: " + ANSI_GREEN + "MatrixSolver" + ANSI_RESET + " done");
 
