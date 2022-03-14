@@ -10,7 +10,6 @@ public class Human_Input_Engine {
 
     public static void main(String[] args) {
         System.out.println(ANSI_RED + "[WARNING]: " + ANSI_RESET + "don't use main, it doesn't do anything, use another method");
-        reader();
     }
 
     public static String reader() {
@@ -22,12 +21,25 @@ public class Human_Input_Engine {
         scnr.nextLine();
         
         for (int i = 0; i < num_of_eq; i++) {
-            System.out.print("Enter " + String.valueOf(i) + ". equation: ");
+            System.out.print("Enter " + String.valueOf(i + 1) + ". equation: ");
             String equation = scnr.next();
             scnr.nextLine();
-            equations = equations + equation + "\n";
+            equation = simplify(equation);
+            equations = equations +  equation + "|";
         }
         
         return equations;
+    }
+
+    public static String simplify(String equation) {
+
+        equation = equation.replaceAll("\\s+", ""); //remove spaces
+        equation = equation.toLowerCase(); //lowercase
+
+        //!used for further process
+        //String left_term = equation.split("=")[0]; 
+        //String right_term = equation.split("=")[1];
+
+        return equation;
     }
 }
