@@ -12,35 +12,35 @@ public class MatrixSolver {
         arr = new int [1][3][3];
 
         //example equation system array:
-        //String varnames []
-        //varnames = new String [4]
-        //varnames[0] = N
-        //varnames[1] = x
-        //varnames[2] = y
-        //varnames[3] = z
-        //arr[0][0][0] = 9;
-        //arr[0][1][0] = 7;
-        //arr[0][2][0] = 3;
-        //arr[0][0][1] = 1;
-        //arr[0][1][1] = 8;
-        //arr[0][2][1] = 6;
-        //arr[0][0][2] = 4;
-        //arr[0][1][2] = 2;
-        //arr[0][2][2] = 11;
-        //arr[1][0][0] = 15;
-        //arr[1][0][1] = 6;
-        //arr[1][0][2] = 9;
-        //arr[2][1][0] = 3;
-        //arr[2][1][1] = 2;
-        //arr[2][1][2] = 4;
-        //arr[2][2][0] = 7;
-        //arr[2][2][1] = 27;
-        //arr[2][2][2] = 18;
+        String varnames [];
+        varnames = new String [4];
+        varnames[0] = "N";
+        varnames[1] = "x";
+        varnames[2] = "y";
+        varnames[3] = "z";
+        arr[0][0][0] = 9;
+        arr[0][1][0] = 7;
+        arr[0][2][0] = 3;
+        arr[0][0][1] = 1;
+        arr[0][1][1] = 8;
+        arr[0][2][1] = 6;
+        arr[0][0][2] = 4;
+        arr[0][1][2] = 2;
+        arr[0][2][2] = 11;
+        arr[1][0][0] = 15;
+        arr[1][0][1] = 6;
+        arr[1][0][2] = 9;
+        arr[2][1][0] = 3;
+        arr[2][1][1] = 2;
+        arr[2][1][2] = 4;
+        arr[2][2][0] = 7;
+        arr[2][2][1] = 27;
+        arr[2][2][2] = 18;
 
-        Determinant(arr);
+        Determinant(arr, varnames);
     }
 
-    public static void Determinant(int arr[][][]){
+    public static void Determinant(int arr[][][], String varnames[]){
 
         // 3-dimensional Array of strings with y being the variable to be found for each "layer", form arr[3][4][x]
         // [x][x][x]
