@@ -64,9 +64,22 @@ public class MatrixSolver {
         sol_arr[2] = (Double) sol_arr[2] / sol_arr[0];
         sol_arr[3] = (Double) sol_arr[3] / sol_arr[0];
  
-        Output_Engine.print_one_dim(sol_arr);
+        merge(sol_arr, varnames);
 
         System.out.println(ANSI_YELLOW + "[INFO]: " + ANSI_GREEN + "MatrixSolver" + ANSI_RESET + " done");
 
+    }
+
+    public static void merge(Double input_arr[], String varnames[]){
+
+        String arr [][];
+        arr = new String [input_arr.length][2];
+
+        for(int x = 0; x < input_arr.length; x++){
+            arr[x][0] = varnames[x];
+            arr[x][1] = String.valueOf(input_arr[x]);
+        }
+
+        Output_Engine.print_str(arr);
     }
 }

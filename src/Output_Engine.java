@@ -68,13 +68,13 @@ public class Output_Engine {
                     }
                 }
 
-                for(int i = 0; i < Math.floor((float) maxlength / 2); i++){
+                for(int i = 0; i < Math.floor((float) (maxlength - arr[x][y].length()) / 2); i++){
                     System.out.print(" ");
                 }
 
                 System.out.print(" " + arr[x][y] + " ");
 
-                for(int i = 0; i < Math.ceil((float) maxlength / 2); i++){
+                for(int i = 0; i < Math.ceil((float) (maxlength - arr[x][y].length()) / 2); i++){
                     System.out.print(" ");
                 }
 
