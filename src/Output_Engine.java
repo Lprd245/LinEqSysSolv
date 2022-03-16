@@ -51,4 +51,38 @@ public class Output_Engine {
         print(arr);
     }
 
+    public static void print_str(String arr[][]){
+
+        System.out.println(ANSI_YELLOW + "[INFO]: " + ANSI_GREEN + "output engine" + ANSI_RESET + " initalized");
+
+        for(int y = 0; y < arr[0].length; y++){
+            for(int x = 0; x < arr.length; x++){
+
+                System.out.print("|");
+
+                int maxlength = 0;
+
+                for(int i = 0; i < arr[x].length; i++){
+                    if(String.valueOf(arr[x][i]).length() > maxlength){
+                        maxlength = String.valueOf(arr[x][i]).length();
+                    }
+                }
+
+                for(int i = 0; i < Math.floor((float) maxlength / 2); i++){
+                    System.out.print(" ");
+                }
+
+                System.out.print(" " + arr[x][y] + " ");
+
+                for(int i = 0; i < Math.ceil((float) maxlength / 2); i++){
+                    System.out.print(" ");
+                }
+
+            }
+            System.out.println("|");
+            
+        }
+        System.out.println(ANSI_YELLOW + "[INFO]: " + ANSI_GREEN + "output engine" + ANSI_RESET + " done");
+    }
+
 }
