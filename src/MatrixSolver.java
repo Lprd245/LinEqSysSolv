@@ -8,8 +8,8 @@ public class MatrixSolver {
     public static void main(String[] args){
         System.out.println(ANSI_RED + "[WARNING]: " + ANSI_RESET + "don't use main, it doesn't do anything, use another method");
         //ONLY USE MAIN METHOD FOR TESTING!!!
-        int arr [][];
-        arr = new int [6][3];
+        Double arr [][];
+        arr = new Double [6][3];
 
         //example equation system array:
         String varnames [];
@@ -18,39 +18,53 @@ public class MatrixSolver {
         varnames[1] = "x";
         varnames[2] = "y";
         varnames[3] = "z";
-        arr[0][0] = 9;
-        arr[1][0] = 7;
-        arr[2][0] = 3;
-        arr[0][1] = 1;
-        arr[1][1] = 8;
-        arr[2][1] = 6;
-        arr[0][2] = 4;
-        arr[1][2] = 2;
-        arr[2][2] = 11;
-        arr[3][0] = 15;
-        arr[3][1] = 6;
-        arr[3][2] = 9;
-        arr[4][0] = 3;
-        arr[4][1] = 2;
-        arr[4][2] = 4;
-        arr[5][0] = 7;
-        arr[5][1] = 27;
-        arr[5][2] = 18;
+        arr[0][0] = 9.0;
+        arr[1][0] = 7.0;
+        arr[2][0] = 3.0;
+        arr[0][1] = 1.0;
+        arr[1][1] = 8.0;
+        arr[2][1] = 6.0;
+        arr[0][2] = 4.0;
+        arr[1][2] = 2.0;
+        arr[2][2] = 11.0;
+        arr[3][0] = 15.0;
+        arr[3][1] = 6.0;
+        arr[3][2] = 9.0;
+        arr[4][0] = 3.0;
+        arr[4][1] = 2.0;
+        arr[4][2] = 4.0;
+        arr[5][0] = 7.0;
+        arr[5][1] = 27.0;
+        arr[5][2] = 18.0;
 
-        Determinant(arr, varnames);
+        threex(arr, varnames);
     }
 
-    public static void Determinant(int arr[][], String varnames[]){
-
-        // 3-dimensional Array of strings with y being the variable to be found for each "layer", form arr[3][4][x]
-        // [x][x][x]
-        // [x][x][x]
-        // [x][x][x]
-        // parallel 1-dimensional Array that stores the variable name (var_names[x] = arr[x][][])
+    public static void threex(Double arr[][], String varnames[]){
 
         System.out.println(ANSI_YELLOW + "[INFO]: " + ANSI_GREEN + "MatrixSolver" + ANSI_RESET + " initalized");
 
-        Output_Engine.print(Determinant);
+        Double sol_arr [];
+        sol_arr = new Double [4];
+
+        //calculation of the Determinant divident
+        sol_arr[0] = arr[0][0] * arr[1][1] * arr[2][2] + arr[1][0] * arr[2][1] * arr[0][2] + arr[2][0] * arr[0][1] * arr[1][2];
+        sol_arr[0] = sol_arr[0] - arr[2][0] * arr[1][1] * arr[0][2] - arr[1][0] * arr[0][1] * arr[2][2] - arr[0][0] * arr[2][1] * arr[1][2];
+
+        //calculation of the Determinant divisor for each variable
+        sol_arr[1] = arr[3][0] * arr[1][1] * arr[2][2] + arr[1][0] * arr[2][1] * arr[3][2] + arr[2][0] * arr[3][1] * arr[1][2];
+        sol_arr[1] = sol_arr[1] - arr[2][0] * arr[1][1] * arr[3][2] - arr[1][0] * arr[3][1] * arr[2][2] - arr[3][0] * arr[2][1] * arr[1][2];
+        sol_arr[2] = arr[0][0] * arr[4][1] * arr[2][2] + arr[4][0] * arr[2][1] * arr[0][2] + arr[2][0] * arr[0][1] * arr[4][2];
+        sol_arr[2] = sol_arr[2] - arr[2][0] * arr[4][1] * arr[0][2] - arr[4][0] * arr[0][1] * arr[2][2] - arr[0][0] * arr[2][1] * arr[4][2];
+        sol_arr[3] = arr[0][0] * arr[1][1] * arr[5][2] + arr[1][0] * arr[5][1] * arr[0][2] + arr[5][0] * arr[0][1] * arr[1][2];
+        sol_arr[3] = sol_arr[3] - arr[5][0] * arr[1][1] * arr[0][2] - arr[1][0] * arr[0][1] * arr[5][2] - arr[0][0] * arr[5][1] * arr[1][2];
+        
+        //doing all the divisions
+        sol_arr[1] = (Double) sol_arr[1] / sol_arr[0];
+        sol_arr[2] = (Double) sol_arr[2] / sol_arr[0];
+        sol_arr[3] = (Double) sol_arr[3] / sol_arr[0];
+ 
+        Output_Engine.print_one_dim(sol_arr);
 
         System.out.println(ANSI_YELLOW + "[INFO]: " + ANSI_GREEN + "MatrixSolver" + ANSI_RESET + " done");
 

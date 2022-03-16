@@ -12,7 +12,7 @@ public class Output_Engine {
         
     }
 
-    public static void print(int arr[][]){
+    public static void print(Double arr[][]){
         
         System.out.println(ANSI_YELLOW + "[INFO]: " + ANSI_GREEN + "output engine" + ANSI_RESET + " initalized");
 
@@ -21,15 +21,15 @@ public class Output_Engine {
 
                 System.out.print("|");
 
-                //"formula": Math.ceil((float) (String.valueOf(Arrays.stream(arr[x]).max().getAsInt()).length() - String.valueOf(arr[x][y]).length()) / 2)
-                for(int spcs = 0; spcs < Math.floor((float) (String.valueOf(Arrays.stream(arr[x]).max().getAsInt()).length() - String.valueOf(arr[x][y]).length()) / 2); spcs++){
+                //"formula": Math.floor((float) (String.valueOf(Arrays.stream(arr[x]).max().getAsInt()).length() - String.valueOf(arr[x][y]).length()) / 2)
+                for(int spcs = 0; spcs < Math.floor((float) (String.valueOf(Arrays.stream(arr[x]).max(Double::compareTo)).length() - 10 - String.valueOf(arr[x][y]).length()) / 2); spcs++){
                     System.out.print(" ");
                 }
 
                 System.out.print(" " + arr[x][y] + " ");
 
                 //"formula": Math.ceil((float) (String.valueOf(Arrays.stream(arr[x]).max().getAsInt()).length() - String.valueOf(arr[x][y]).length()) / 2)
-                for(int spcs = 0; spcs < Math.ceil((float) (String.valueOf(Arrays.stream(arr[x]).max().getAsInt()).length() - String.valueOf(arr[x][y]).length()) / 2); spcs++){
+                for(int spcs = 0; spcs < Math.ceil((float) (String.valueOf(Arrays.stream(arr[x]).max(Double::compareTo)).length() - 10 - String.valueOf(arr[x][y]).length()) / 2); spcs++){
                     System.out.print(" ");
                 }
 
@@ -40,6 +40,15 @@ public class Output_Engine {
 
         System.out.println(ANSI_YELLOW + "[INFO]: " + ANSI_GREEN + "output engine" + ANSI_RESET + " done");
 
+    }
+
+    public static void print_one_dim(Double input_arr[]){
+        Double arr [][];
+        arr = new Double [input_arr.length][1];
+        for(int i = 0; i < input_arr.length; i++){
+            arr[i][0] = input_arr[i];
+        }
+        print(arr);
     }
 
 }
