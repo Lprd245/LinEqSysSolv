@@ -37,7 +37,26 @@ public class MatrixSolver {
         arr[5][1] = 27.0;
         arr[5][2] = 18.0;
 
-        threex(arr, varnames);
+        twox(arr, varnames);
+    }
+
+    public static void twox(Double arr[][], String varnames[]){
+        
+        System.out.println(ANSI_YELLOW + "[INFO]: " + ANSI_GREEN + "MatrixSolver" + ANSI_RESET + " initalized");
+
+        Double sol_arr [];
+        sol_arr = new Double [3];
+
+        //calculation of the Determinant divident
+        sol_arr[0] = arr[0][0] * arr[1][1] - arr[1][0] * arr[0][1];
+        
+        //calculation of the Determinant divisor for each variable
+        sol_arr[1] = arr[2][0] * arr[1][1] - arr[1][0] * arr[2][1];
+        sol_arr[2] = arr[0][0] * arr[3][1] - arr[3][0] * arr[0][1];
+
+        merge(sol_arr, varnames);
+
+        System.out.println(ANSI_YELLOW + "[INFO]: " + ANSI_GREEN + "MatrixSolver" + ANSI_RESET + " done");
     }
 
     public static void threex(Double arr[][], String varnames[]){
@@ -68,6 +87,10 @@ public class MatrixSolver {
 
         System.out.println(ANSI_YELLOW + "[INFO]: " + ANSI_GREEN + "MatrixSolver" + ANSI_RESET + " done");
 
+    }
+
+    public static void large(Double arr[][], String varnames[]){
+        
     }
 
     public static void merge(Double input_arr[], String varnames[]){
