@@ -37,7 +37,7 @@ public class MatrixSolver {
         arr[5][1] = 27.0;
         arr[5][2] = 18.0;
 
-        twox(arr, varnames);
+        threex(arr, varnames);
     }
 
     public static void twox(Double arr[][], String varnames[]){
@@ -54,7 +54,22 @@ public class MatrixSolver {
         sol_arr[1] = arr[2][0] * arr[1][1] - arr[1][0] * arr[2][1];
         sol_arr[2] = arr[0][0] * arr[3][1] - arr[3][0] * arr[0][1];
 
-        merge(sol_arr, varnames);
+        //checking for special cases
+        if(sol_arr[0] == 0){
+            if(sol_arr[1] == 0 && sol_arr[2] == 0){
+                System.out.println("Inifinte solution possibilities");
+            }
+            else{
+                System.out.println("No possible solutions");
+            }
+        }
+        else{
+            //doing all the divisions
+            sol_arr[1] = (Double) sol_arr[1] / sol_arr[0];
+            sol_arr[2] = (Double) sol_arr[2] / sol_arr[0];
+
+            merge(sol_arr, varnames);
+        }
 
         System.out.println(ANSI_YELLOW + "[INFO]: " + ANSI_GREEN + "MatrixSolver" + ANSI_RESET + " done");
     }
@@ -77,14 +92,25 @@ public class MatrixSolver {
         sol_arr[2] = sol_arr[2] - arr[2][0] * arr[4][1] * arr[0][2] - arr[4][0] * arr[0][1] * arr[2][2] - arr[0][0] * arr[2][1] * arr[4][2];
         sol_arr[3] = arr[0][0] * arr[1][1] * arr[5][2] + arr[1][0] * arr[5][1] * arr[0][2] + arr[5][0] * arr[0][1] * arr[1][2];
         sol_arr[3] = sol_arr[3] - arr[5][0] * arr[1][1] * arr[0][2] - arr[1][0] * arr[0][1] * arr[5][2] - arr[0][0] * arr[5][1] * arr[1][2];
-        
-        //doing all the divisions
-        sol_arr[1] = (Double) sol_arr[1] / sol_arr[0];
-        sol_arr[2] = (Double) sol_arr[2] / sol_arr[0];
-        sol_arr[3] = (Double) sol_arr[3] / sol_arr[0];
- 
-        merge(sol_arr, varnames);
 
+        //checking for special cases
+        if(sol_arr[0] == 0){
+            if(sol_arr[1] == 0 && sol_arr[2] == 0 && sol_arr[3] == 0){
+                System.out.println("Infinite solution possibilities");
+            }
+            else{
+                System.out.println("No possilbe solutions");
+            }
+        }
+        else{
+            //doing all the divisions
+            sol_arr[1] = (Double) sol_arr[1] / sol_arr[0];
+            sol_arr[2] = (Double) sol_arr[2] / sol_arr[0];
+            sol_arr[3] = (Double) sol_arr[3] / sol_arr[0];
+ 
+            merge(sol_arr, varnames);
+        }
+        
         System.out.println(ANSI_YELLOW + "[INFO]: " + ANSI_GREEN + "MatrixSolver" + ANSI_RESET + " done");
 
     }
