@@ -9,7 +9,7 @@ public class MatrixSolver {
         System.out.println(ANSI_RED + "[WARNING]: " + ANSI_RESET + "don't use main, it doesn't do anything, use another method");
         //ONLY USE MAIN METHOD FOR TESTING!!!
         Double arr [][];
-        arr = new Double [6][3];
+        arr = new Double [4][3];
 
         //example equation system array:
         String varnames [];
@@ -21,22 +21,16 @@ public class MatrixSolver {
         arr[0][0] = 9.0;
         arr[1][0] = 7.0;
         arr[2][0] = 3.0;
+        arr[3][0] = 15.0;
         arr[0][1] = 1.0;
         arr[1][1] = 8.0;
         arr[2][1] = 6.0;
+        arr[3][1] = 6.0;
         arr[0][2] = 4.0;
         arr[1][2] = 2.0;
         arr[2][2] = 11.0;
-        arr[3][0] = 15.0;
-        arr[3][1] = 6.0;
         arr[3][2] = 9.0;
-        arr[4][0] = 3.0;
-        arr[4][1] = 2.0;
-        arr[4][2] = 4.0;
-        arr[5][0] = 7.0;
-        arr[5][1] = 27.0;
-        arr[5][2] = 18.0;
-
+    
         threex(arr, varnames);
     }
 
@@ -52,7 +46,7 @@ public class MatrixSolver {
         
         //calculation of the Determinant divisor for each variable
         sol_arr[1] = arr[2][0] * arr[1][1] - arr[1][0] * arr[2][1];
-        sol_arr[2] = arr[0][0] * arr[3][1] - arr[3][0] * arr[0][1];
+        sol_arr[2] = arr[0][0] * arr[2][1] - arr[2][0] * arr[0][1];
 
         //checking for special cases
         if(sol_arr[0] == 0){
@@ -88,10 +82,10 @@ public class MatrixSolver {
         //calculation of the Determinant divisor for each variable
         sol_arr[1] = arr[3][0] * arr[1][1] * arr[2][2] + arr[1][0] * arr[2][1] * arr[3][2] + arr[2][0] * arr[3][1] * arr[1][2];
         sol_arr[1] = sol_arr[1] - arr[2][0] * arr[1][1] * arr[3][2] - arr[1][0] * arr[3][1] * arr[2][2] - arr[3][0] * arr[2][1] * arr[1][2];
-        sol_arr[2] = arr[0][0] * arr[4][1] * arr[2][2] + arr[4][0] * arr[2][1] * arr[0][2] + arr[2][0] * arr[0][1] * arr[4][2];
-        sol_arr[2] = sol_arr[2] - arr[2][0] * arr[4][1] * arr[0][2] - arr[4][0] * arr[0][1] * arr[2][2] - arr[0][0] * arr[2][1] * arr[4][2];
-        sol_arr[3] = arr[0][0] * arr[1][1] * arr[5][2] + arr[1][0] * arr[5][1] * arr[0][2] + arr[5][0] * arr[0][1] * arr[1][2];
-        sol_arr[3] = sol_arr[3] - arr[5][0] * arr[1][1] * arr[0][2] - arr[1][0] * arr[0][1] * arr[5][2] - arr[0][0] * arr[5][1] * arr[1][2];
+        sol_arr[2] = arr[0][0] * arr[3][1] * arr[2][2] + arr[3][0] * arr[2][1] * arr[0][2] + arr[2][0] * arr[0][1] * arr[3][2];
+        sol_arr[2] = sol_arr[2] - arr[2][0] * arr[3][1] * arr[0][2] - arr[3][0] * arr[0][1] * arr[2][2] - arr[0][0] * arr[2][1] * arr[3][2];
+        sol_arr[3] = arr[0][0] * arr[1][1] * arr[3][2] + arr[1][0] * arr[3][1] * arr[0][2] + arr[3][0] * arr[0][1] * arr[1][2];
+        sol_arr[3] = sol_arr[3] - arr[3][0] * arr[1][1] * arr[0][2] - arr[1][0] * arr[0][1] * arr[3][2] - arr[0][0] * arr[3][1] * arr[1][2];
 
         //checking for special cases
         if(sol_arr[0] == 0){
@@ -115,8 +109,15 @@ public class MatrixSolver {
 
     }
 
-    public static void large(Double arr[][], String varnames[]){
-        
+    public static void large(Double inputarr[][], String varnames[]){
+        if(inputarr.length > 3){
+            Double arr[][];
+            arr = new Double [inputarr.length - 1][inputarr[0].length - 1];
+            for(int i = 0; i < inputarr.length - 1; i++){
+                
+            }
+
+        }
     }
 
     public static void merge(Double input_arr[], String varnames[]){
