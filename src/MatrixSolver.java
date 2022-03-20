@@ -111,8 +111,8 @@ public class MatrixSolver {
 
     public static void large(Double inputarr[][], String varnames[]){
         if(inputarr.length > 3){
-            Double arr[][];
-            arr = new Double [inputarr.length - 1][inputarr[0].length - 1];
+            //Double arr[][];
+            //arr = new Double [inputarr.length - 1][inputarr[0].length - 1];
             for(int i = 0; i < inputarr.length - 1; i++){
                 
             }
