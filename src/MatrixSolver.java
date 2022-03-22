@@ -109,14 +109,11 @@ public class MatrixSolver {
 
     }
 
-    public static void large(Double inputarr[][], String varnames[]){
-        if(inputarr.length > 3){
-            //Double arr[][];
-            //arr = new Double [inputarr.length - 1][inputarr[0].length - 1];
-            for(int i = 0; i < inputarr.length - 1; i++){
-                
-            }
-
+    public static void large(Double arr[][], String varnames[]){
+        Double sol_arr [];
+        sol_arr = new Double [arr[0].length + 1];
+        for(int i = 0; i < arr[0].length;){
+            sol_arr[i] = 0.0;
         }
     }
 
