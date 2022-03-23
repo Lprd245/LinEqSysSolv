@@ -110,11 +110,32 @@ public class MatrixSolver {
     }
 
     public static void large(Double arr[][], String varnames[]){
-        Double sol_arr [];
-        sol_arr = new Double [arr[0].length + 1];
-        for(int i = 0; i < arr[0].length;){
-            sol_arr[i] = 0.0;
+        //Double sol_arr [];
+        //sol_arr = new Double [arr[0].length + 1];
+        Double output_arr [][];
+        output_arr = new Double [arr.length - 1][arr[0].length - 1];
+        int arrpos = 0;
+        for(int j = 0; j < arr[0].length; j++){
+
+            for(int k = 0; k < arr.length; k++){
+
+                for(int l = 0; l < 0; l++){
+
+                    for(int m = 0; m < 0; m++){
+                        
+                        if(l != j){
+
+                            if(m != k){
+
+                                output_arr[arrpos % output_arr.length][arrpos / output_arr.length - 1] = arr[l][m];
+                                arrpos++;
+                            }
+                        }
+                    }
+                }
+            }
         }
+
     }
 
     public static void merge(Double input_arr[], String varnames[]){

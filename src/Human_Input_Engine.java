@@ -11,25 +11,27 @@ public class Human_Input_Engine {
     public static void main(String[] args) {
         System.out.println(ANSI_RED + "[WARNING]: " + ANSI_RESET + "don't use main, it doesn't do anything, use another method");
         String x = simplify("1 X-3 (4+1)=3");
+        System.out.println(x);
     }
 
     public static String reader() {
-        Scanner scnr = new Scanner(System.in);
-        String equations = "";
+        try (Scanner scnr = new Scanner(System.in)) {
+            String equations = "";
 
-        System.out.print("Enter number of equations: ");
-        int num_of_eq = scnr.nextInt();
-        scnr.nextLine();
-        
-        for (int i = 0; i < num_of_eq; i++) {
-            System.out.print("Enter " + String.valueOf(i + 1) + ". equation: ");
-            String equation = scnr.next();
+            System.out.print("Enter number of equations: ");
+            int num_of_eq = scnr.nextInt();
             scnr.nextLine();
-            equation = simplify(equation);
-            equations = equations +  equation + "|";
+            
+            for (int i = 0; i < num_of_eq; i++) {
+                System.out.print("Enter " + String.valueOf(i + 1) + ". equation: ");
+                String equation = scnr.next();
+                scnr.nextLine();
+                equation = simplify(equation);
+                equations = equations +  equation + "|";
+            }
+            
+            return equations;
         }
-        
-        return equations;
     }
 
     public static String simplify(String equation) {
@@ -41,8 +43,8 @@ public class Human_Input_Engine {
         String left_term = equation.split("=")[0]; 
         String right_term = equation.split("=")[1];
 
-        String new_left_term;
-        String new_right_term;
+        //String new_left_term;
+        //String new_right_term;
 
         //solving brackets
         for (int i=0; i<left_term.length(); i++) {
@@ -60,6 +62,8 @@ public class Human_Input_Engine {
                 }
             }
         }   
+        System.out.println(left_term);
+        System.out.println(right_term);
 
         return equation;
     }
