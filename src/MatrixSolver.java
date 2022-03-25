@@ -9,7 +9,7 @@ public class MatrixSolver {
         System.out.println(ANSI_RED + "[WARNING]: " + ANSI_RESET + "don't use main, it doesn't do anything, use another method");
         //ONLY USE MAIN METHOD FOR TESTING!!!
         Double arr [][];
-        arr = new Double [4][3];
+        arr = new Double [3][3];
 
         //example equation system array:
         String varnames [];
@@ -21,17 +21,17 @@ public class MatrixSolver {
         arr[0][0] = 9.0;
         arr[1][0] = 7.0;
         arr[2][0] = 3.0;
-        arr[3][0] = 15.0;
+        //arr[3][0] = 15.0;
         arr[0][1] = 1.0;
         arr[1][1] = 8.0;
         arr[2][1] = 6.0;
-        arr[3][1] = 6.0;
+        //arr[3][1] = 6.0;
         arr[0][2] = 4.0;
         arr[1][2] = 2.0;
         arr[2][2] = 11.0;
-        arr[3][2] = 9.0;
+        //arr[3][2] = 9.0;
     
-        determine(arr);
+        System.out.println(determine(arr));
     }
 
     public static void twox(Double arr[][], String varnames[]){
@@ -114,15 +114,28 @@ public class MatrixSolver {
             Double ret = 0.0;
 
             if(arr.length == arr[0].length){
-                int dim = arr[0].length;
 
-                if (dim > 0) {
+                if (arr[0].length > 0) {
                     int add = 1;
                     ret = 0.0;
 
-                    for (int j = 0; j < arr.length; j++) {
-                        ret = ret + add * arr[0][j] * determine(compress(arr,0,j));
-                        add = - add;
+                    if(arr[0].length == 1){
+                        return(arr[0][0]);
+                    }
+
+                    else if(arr[0].length == 2){
+                        return(arr[0][0] * arr[1][1] - arr[1][0] * arr[0][1]);
+                    }
+
+                    else if(arr[0].length == 3){
+                        return(arr[0][0] * arr[1][1] * arr[2][2] + arr[1][0] * arr[2][1] * arr[0][2] + arr[2][0] * arr[0][1] * arr[1][2] - arr[2][0] * arr[1][1] * arr[0][2] - arr[1][0] * arr[0][1] * arr[2][2] - arr[0][0] * arr[2][1] * arr[1][2]);
+                    }
+
+                    else{
+                        for (int j = 0; j < arr.length; j++) {
+                            ret = ret + add * arr[0][j] * determine(compress(arr,0,j));
+                            add = - add;
+                        }
                     }
                 }
             }
