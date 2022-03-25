@@ -31,7 +31,7 @@ public class MatrixSolver {
         arr[2][2] = 11.0;
         arr[3][2] = 9.0;
     
-        threex(arr, varnames);
+        determine(arr);
     }
 
     public static void twox(Double arr[][], String varnames[]){
@@ -109,33 +109,56 @@ public class MatrixSolver {
 
     }
 
-    public static void large(Double arr[][], String varnames[]){
-        //Double sol_arr [];
-        //sol_arr = new Double [arr[0].length + 1];
-        Double output_arr [][];
-        output_arr = new Double [arr.length - 1][arr[0].length - 1];
-        int arrpos = 0;
-        for(int j = 0; j < arr[0].length; j++){
+    public static Double determine(Double arr[][]){
 
-            for(int k = 0; k < arr.length; k++){
+            Double ret = 0.0;
 
-                for(int l = 0; l < 0; l++){
+            if(arr.length == arr[0].length){
+                int dim = arr[0].length;
 
-                    for(int m = 0; m < 0; m++){
-                        
-                        if(l != j){
+                if (dim > 0) {
+                    int add = 1;
+                    ret = 0.0;
 
-                            if(m != k){
-
-                                output_arr[arrpos % output_arr.length][arrpos / output_arr.length - 1] = arr[l][m];
-                                arrpos++;
-                            }
-                        }
+                    for (int j = 0; j < arr.length; j++) {
+                        ret = ret + add * arr[0][j] * determine(compress(arr,0,j));
+                        add = - add;
                     }
                 }
             }
-        }
+            return ret;
 
+    }
+
+
+
+    public static Double[][] compress(Double arr[][], int coordy, int coordx){
+
+            Double ret [][];
+            ret = new Double [arr.length - 1][arr[0].length - 1];
+
+            int n = 0;
+            int k = 0;
+            
+            for (int i = 0; i < arr[0].length; i++){
+
+                if (i != coordy){
+                    k=0;
+                    for(int j = 0; j < arr.length; j++){
+
+                        if(j != coordx){
+
+                            ret[n][k] = arr[i][j];
+                            k++;
+                        }
+                    }
+                    
+                    ++n;
+                }
+            }
+            Output_Engine.print(ret);
+            return(ret);
+        
     }
 
     public static void merge(Double input_arr[], String varnames[]){
