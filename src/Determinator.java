@@ -7,7 +7,100 @@ public class Determinator {
     public static final String ANSI_BLUE = "\u001B[34m";
 
     public static void main(String[] args){
-        
+        Double arr [][];
+        arr = new Double [4][3];
+
+        arr[0][0] = 11.0;
+        arr[1][0] = 9.0;
+        arr[2][0] = 7.0;
+        arr[3][0] = 14.0;
+
+        arr[0][1] = 2.0;
+        arr[1][1] = 19.0;
+        arr[2][1] = 16.0;
+        arr[3][1] = 11.0;
+
+        arr[0][2] = 15.0;
+        arr[1][2] = 2.0;
+        arr[2][2] = 10.0;
+        arr[3][2] = 2.0;
+
+        manager(arr);
+    }
+
+    public static void manager(Double arr[][]){ //extension with String varnames[]
+        Double sol_arr [];
+        sol_arr = new Double [arr[0].length + 1];
+
+        Double matrix_arr [][][];
+        matrix_arr = new Double [arr.length - 1][arr[0].length][arr.length];
+
+        if(arr.length == arr[0].length + 1){
+            //making 3dimensional array with matrix for each variable
+            for(int i = 0; i < arr[0].length; i++){
+                for(int j = 0; j < arr.length - 1; j++){
+                    for(int l = 0; l < arr[0].length; l++){
+                        if(i != j){
+                            matrix_arr[j][l][i + 1] = arr[j][l];
+                        } else {
+                            matrix_arr[j][l][i + 1] = arr[arr.length - 1][l];
+                        }
+                    }
+                }
+            }
+            //filling first array with denominator-matrix
+            for(int i = 0; i < arr.length - 1; i++){
+                for(int j = 0; j < arr[0].length; j++){
+                    matrix_arr[i][j][0] = arr[i][j];
+                }
+            }
+
+
+            //getting determinant for each array layer
+            for(int i = 0; i < matrix_arr[0][0].length; i++){
+                Double determine [][];
+                determine = new Double [matrix_arr.length][matrix_arr[0].length];
+
+                for(int j = 0; j < matrix_arr.length; j++){
+                    for(int l = 0; l < matrix_arr[0].length; l++){
+                        determine[j][l] = matrix_arr[j][l][i];
+                    }
+                }
+
+                sol_arr[i] = determine(determine);
+            }
+
+            Output_Engine.print_ln(sol_arr);
+
+
+            //checking for special cases
+            if(sol_arr[0] == 0){
+                boolean isInfinite = true;
+
+                for(int i = 0; i < sol_arr.length; i++){
+                    if(sol_arr[i] != 0){
+                        isInfinite = false;
+                    }
+                }
+
+                if(isInfinite == true){
+                    System.out.println("Infinite solution possibilities");
+                } else {
+                    System.out.println("No possible solutions");
+                }
+            } else {
+                //doing all the divisions to get the actual results
+                for(int i = 0; i < sol_arr.length - 1; i++){
+                    sol_arr[i + 1] = sol_arr[i + 1] / sol_arr[0];
+                }
+
+                Output_Engine.print_ln(sol_arr);
+            }
+
+
+        } else {
+            System.out.println("Input is not the correct size (correct size: [ x | x - 1 ])");
+        }
     }
     
     public static Double determine(Double arr[][]){
@@ -70,7 +163,6 @@ public static Double[][] compress(Double arr[][], int coordy, int coordx){
                 ++n;
             }
         }
-        Output_Engine.print(ret);
         return(ret);
     
 }

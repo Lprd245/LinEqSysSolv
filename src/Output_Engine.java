@@ -42,6 +42,19 @@ public class Output_Engine {
 
     }
 
+    public static void print_ln(Double arr[]){
+
+        System.out.println(ANSI_YELLOW + "[INFO]: " + ANSI_GREEN + "output engine" + ANSI_RESET + " initalized");
+
+        System.out.print("|");
+        for(int x = 0; x < arr.length; x++){
+
+            System.out.print(" " + arr[x] + " |");
+        }
+        System.out.print("\n");
+        System.out.println(ANSI_YELLOW + "[INFO]: " + ANSI_GREEN + "output engine" + ANSI_RESET + " done");
+    }
+
     public static void print_one_dim(Double input_arr[]){
         Double arr [][];
         arr = new Double [input_arr.length][1];
