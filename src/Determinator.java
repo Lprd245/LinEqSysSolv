@@ -7,25 +7,7 @@ public class Determinator {
     public static final String ANSI_BLUE = "\u001B[34m";
 
     public static void main(String[] args){
-        Double arr [][];
-        arr = new Double [4][3];
-
-        arr[0][0] = 11.0;
-        arr[1][0] = 9.0;
-        arr[2][0] = 7.0;
-        arr[3][0] = 14.0;
-
-        arr[0][1] = 2.0;
-        arr[1][1] = 19.0;
-        arr[2][1] = 16.0;
-        arr[3][1] = 11.0;
-
-        arr[0][2] = 15.0;
-        arr[1][2] = 2.0;
-        arr[2][2] = 10.0;
-        arr[3][2] = 2.0;
-
-        manager(arr);
+        
     }
 
     public static void manager(Double arr[][]){ //extension with String varnames[]
