@@ -7,8 +7,8 @@ public class Determinator {
     public static final String ANSI_BLUE = "\u001B[34m";
 
     public static void main(String[] args){
-        Double arr [][];
-        arr = new Double [4][3];
+        double arr [][];
+        arr = new double [4][3];
 
         arr[0][0] = 11.0;
         arr[1][0] = 9.0;
@@ -28,12 +28,12 @@ public class Determinator {
         manager(arr);
     }
 
-    public static void manager(Double arr[][]){ //extension with String varnames[]
-        Double sol_arr [];
-        sol_arr = new Double [arr[0].length + 1];
+    public static void manager(double arr[][]){ //extension with String varnames[]
+        double sol_arr [];
+        sol_arr = new double [arr[0].length + 1];
 
-        Double matrix_arr [][][];
-        matrix_arr = new Double [arr.length - 1][arr[0].length][arr.length];
+        double matrix_arr [][][];
+        matrix_arr = new double [arr.length - 1][arr[0].length][arr.length];
 
         if(arr.length == arr[0].length + 1){
             //making 3dimensional array with matrix for each variable
@@ -58,8 +58,8 @@ public class Determinator {
 
             //getting determinant for each array layer
             for(int i = 0; i < matrix_arr[0][0].length; i++){
-                Double determine [][];
-                determine = new Double [matrix_arr.length][matrix_arr[0].length];
+                double determine [][];
+                determine = new double [matrix_arr.length][matrix_arr[0].length];
 
                 for(int j = 0; j < matrix_arr.length; j++){
                     for(int l = 0; l < matrix_arr[0].length; l++){
@@ -69,8 +69,6 @@ public class Determinator {
 
                 sol_arr[i] = determine(determine);
             }
-
-            Output_Engine.print_ln(sol_arr);
 
 
             //checking for special cases
@@ -94,7 +92,7 @@ public class Determinator {
                     sol_arr[i + 1] = sol_arr[i + 1] / sol_arr[0];
                 }
 
-                Output_Engine.print_ln(sol_arr);
+                Output_Engine_2.print_1d(null, sol_arr, null);
             }
 
 
@@ -103,9 +101,9 @@ public class Determinator {
         }
     }
     
-    public static Double determine(Double arr[][]){
+    public static double determine(double arr[][]){
 
-        Double ret = 0.0;
+        double ret = 0.0;
 
         if(arr.length == arr[0].length){
 
@@ -139,10 +137,10 @@ public class Determinator {
 
 
 
-public static Double[][] compress(Double arr[][], int coordy, int coordx){
+public static double[][] compress(double arr[][], int coordy, int coordx){
 
-        Double ret [][];
-        ret = new Double [arr.length - 1][arr[0].length - 1];
+        double ret [][];
+        ret = new double [arr.length - 1][arr[0].length - 1];
 
         int n = 0;
         int k = 0;
