@@ -91,8 +91,13 @@ public class Determinator {
                 for(int i = 0; i < sol_arr.length - 1; i++){
                     sol_arr[i + 1] = sol_arr[i + 1] / sol_arr[0];
                 }
+                double o_arr [];
+                o_arr = new double [sol_arr.length - 1];
+                for(int i = 0; i < o_arr.length; i++){
+                    o_arr[i] = sol_arr[i + 1];
+                }
 
-                Output_Engine_2.print_1d(null, sol_arr, null);
+                Output_Engine_2.print_1d(null, o_arr, null);
             }
 
 
