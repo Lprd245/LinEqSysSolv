@@ -3,10 +3,8 @@ public class Output_Engine_2 {
 
     }
 
-    public static void print_2d(String str, double dbl, int nt){
-
-    }
-
+    //make sure to enter null twice, since it's only designed to print one datatype at a time
+    //for multiple arrays/datatypes just call the method multiple times
     public static void print_1d(String str [], double dbl [], int nt []){
         String arr [];
         if(str != null){
