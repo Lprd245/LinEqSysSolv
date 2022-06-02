@@ -27,3 +27,6 @@ hs_err_pid*
 
 #PDF's
 *.pdf
+
+#"data" files
+*.dat

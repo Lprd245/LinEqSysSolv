@@ -4,7 +4,7 @@ public class File_io {
     public static void main(String[] args) throws IOException{
 
         double arr [][];
-        arr = new double [11][10];
+        arr = new double [7][6];
 
         for(int i = 0; i < arr[0].length; i++){
             for(int j = 0; j < arr.length; j++){
@@ -12,7 +12,9 @@ public class File_io {
             }
 
         }
-        arr = readarr("töst");
+        writearr("töst.dat", arr);
+        arr = readarr("töst.dat");
+        Output_Engine_2.print_2d(null, arr, null);
 
 
     }
@@ -40,26 +42,26 @@ public class File_io {
 
         //finding size to expect for reading
         String tmpmxinfo [];
-        tmpmxinfo = new String [3];
+        tmpmxinfo = new String [2];
         tmpmxinfo = rdr.readLine().split("/");
 
 
 
         int mxinfo [];
-        mxinfo = new int [3];
-        mxinfo[1] = Integer.parseInt(tmpmxinfo[0]); //array.length (columns)
-        mxinfo[2] = Integer.parseInt(tmpmxinfo[1]); //array[0].length (rows)
+        mxinfo = new int [2];
+        mxinfo[0] = Integer.parseInt(tmpmxinfo[0]); //array.length (columns)
+        mxinfo[1] = Integer.parseInt(tmpmxinfo[1]); //array[0].length (rows)
 
         String tmparr [][];
-        tmparr = new String [mxinfo[2]][mxinfo[1]];
+        tmparr = new String [mxinfo[1]][mxinfo[0]];
 
         double arr [][];
-        arr = new double [mxinfo[1]][mxinfo[2]];
+        arr = new double [mxinfo[0]][mxinfo[1]];
 
-        for(int i = 0; i < mxinfo[2]; i++){
+        for(int i = 0; i < mxinfo[1]; i++){
             tmparr[i] = rdr.readLine().split(" ");
 
-            for(int j = 0; j < mxinfo[1]; j++){
+            for(int j = 0; j < mxinfo[0]; j++){
                 arr[j][i] = Double.valueOf(tmparr[i][j]);
             }
             
