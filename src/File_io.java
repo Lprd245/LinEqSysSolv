@@ -20,32 +20,32 @@ public class File_io {
     }
 
     public static void writearr(String filename, double arr[][]) throws IOException{
-        BufferedWriter wrtr = new BufferedWriter(new FileWriter(filename));
+        BufferedWriter wrtr = new BufferedWriter(new FileWriter(filename)); //initializing writer
 
-        wrtr.write(String.valueOf(arr.length + "/" + arr[0].length));
-        System.out.println("Writing to file " + filename + " with size [" + arr.length + "|" + arr[0].length + "]");
+        wrtr.write(String.valueOf(arr.length + "/" + arr[0].length)); //storing size information about Matrix in form "xdim/ydim"
+        System.out.println("Writing to file " + filename + " with size [" + arr.length + "|" + arr[0].length + "]"); //informing the user
         wrtr.newLine();
 
-        for(int i = 0; i < arr[0].length; i++){
+        for(int i = 0; i < arr[0].length; i++){ //writing each element of the matrix
             for(int j = 0; j < arr.length; j++){
                 wrtr.write(String.valueOf(arr[j][i]) + " ");
             }
             wrtr.newLine();
         }
 
-        wrtr.close();
+        wrtr.close(); //cleanup
     }
 
     public static double[][] readarr(String filename) throws IOException{
 
-        BufferedReader rdr = new BufferedReader(new FileReader(filename));
+        BufferedReader rdr = new BufferedReader(new FileReader(filename)); //initializing reader
 
         //finding size to expect for reading
         String tmpmxinfo [];
         tmpmxinfo = new String [2];
         tmpmxinfo = rdr.readLine().split("/");
 
-
+        //converting information to actual useable ints
 
         int mxinfo [];
         mxinfo = new int [2];
@@ -59,17 +59,17 @@ public class File_io {
         arr = new double [mxinfo[0]][mxinfo[1]];
 
         for(int i = 0; i < mxinfo[1]; i++){
-            tmparr[i] = rdr.readLine().split(" ");
+            tmparr[i] = rdr.readLine().split(" "); //reading line by line
 
             for(int j = 0; j < mxinfo[0]; j++){
-                arr[j][i] = Double.valueOf(tmparr[i][j]);
+                arr[j][i] = Double.valueOf(tmparr[i][j]); //splitting each line
             }
             
         }
         
 
 
-        rdr.close();
+        rdr.close(); //cleanup
 
         return(arr);
     }
