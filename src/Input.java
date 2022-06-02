@@ -4,17 +4,17 @@ import java.util.Scanner;
 public class Input {
     public static void main(String[] args) throws IOException{
 
-        boolean save = false;
+        boolean save = false; //initializing fileio arguments in case they are needed
         String filename = "";
 
         if(args.length >= 3 && args[2].equals("save")){
             System.out.println("saving");
             save = true;
-            filename = args[3];
+            filename = (args[3] + ".dat");
         }
 
         if(args[0].equals("load")){
-            Determinator.manager(File_io.readarr(args[1]));
+            Determinator.manager(File_io.readarr(args[1] + ".dat"));
         }else{
 
 
