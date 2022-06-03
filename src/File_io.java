@@ -71,6 +71,8 @@ public class File_io {
 
         rdr.close(); //cleanup
 
+        Output_Engine_2.print_2d(null, arr, null);
+
         return(arr);
     }
 }
